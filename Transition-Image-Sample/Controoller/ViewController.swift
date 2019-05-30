@@ -8,14 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ImageSourceTransitionType {
 
     @IBOutlet weak var collectionView: UICollectionView!
     private var imageDataList = [ImageData]()
     private let numberOfColums: CGFloat = 3
     private let spacing: CGFloat = 15
-
-    var imageTransitionDelegate: ImageTransitionDelegate?
+    private var selectingCellIndex = IndexPath()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +22,9 @@ class ViewController: UIViewController {
     }
     
     private func setup() {
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         imageDataList = DataSource.create()
-        self.collectionView.reloadData()
-        imageTransitionDelegate = ImageTransitionDelegate()
     }
 
     private func itemSize() -> CGSize {
@@ -56,16 +53,14 @@ extension ViewController: UICollectionViewDataSource {
         cell.setup(imageData: imageDataList[indexPath.row])
         return cell
     }
-
 }
 
 extension ViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectingCellIndex = indexPath
         guard let image = UIImage(named: imageDataList[indexPath.item].name) else { return }
         let detailImageVC = DetailImageViewController(image: image)
-//        imageViewController.transitioningDelegate = imageTransitionDelegate
-//        imageViewController.image = imageDataList[indexPath.row].image
+        detailImageVC.transitioningDelegate = self
         present(detailImageVC, animated: true, completion: nil)
     }
 }
@@ -82,5 +77,19 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return insets()
+    }
+}
+
+extension ViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let vc = presenting as? ImageSourceTransitionType, let detailImageVC = presented as? ImageDestinationTransitionType, let transitionableCell = vc.collectionView.cellForItem(at: selectingCellIndex) as? TransitionableCell else {
+            return nil
+        }
+
+        return ImagePresentedAnimator(presenting: vc, presented: detailImageVC, transitionableCell: transitionableCell, duration: 1.0)
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return ImageDismissedAnimator()
     }
 }

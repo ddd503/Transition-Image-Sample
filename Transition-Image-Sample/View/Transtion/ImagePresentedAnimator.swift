@@ -9,14 +9,27 @@
 import UIKit
 
 final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    
+
+    let presenting: ImageSourceTransitionType
+    let presented: ImageDestinationTransitionType
+    let transitionableCell: TransitionableCell
+    let duration: TimeInterval
+
+    init(presenting: ImageSourceTransitionType, presented: ImageDestinationTransitionType, transitionableCell: TransitionableCell, duration: TimeInterval) {
+        self.presenting = presenting
+        self.presented = presented
+        self.transitionableCell = transitionableCell
+        self.duration = duration
+    }
+
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+        return duration
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         let containerView = transitionContext.containerView
+
         let animationDuration = transitionDuration(using: transitionContext)
         
         guard
@@ -25,27 +38,17 @@ final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransition
                 return
         }
         
-        guard let fromVC = transitionContext.viewController(forKey: .from) as? ImageSourceTransitionType else {
-            return
-        }
-        
-        guard
-            let selectedIndexPath = fromVC.collectionView.indexPathsForSelectedItems?.first,
-            let selectedCell = fromVC.collectionView.cellForItem(at: selectedIndexPath) as? ImageCollectionViewCellType else {
-                return
-        }
-        
         // set image
-        toVC.imageView.image = selectedCell.imageView.image
+        toVC.imageView.image = transitionableCell.imageView.image
         
-        let finalFrame = toVC.imageView.frame
+        let finalFrame = presented.imageView.frame
         
         toView.clipsToBounds = true
         containerView.addSubview(toView)
         
         let selectedCellFrame = containerView.convert(
-            selectedCell.imageView.frame,
-            from: selectedCell.imageView.superview
+            transitionableCell.imageView.frame,
+            from: transitionableCell.imageView.superview
         )
         
         // create animationView
@@ -53,7 +56,7 @@ final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransition
         animationView.backgroundColor = .clear
         animationView.clipsToBounds = true
         
-        let imageView = UIImageView(image: selectedCell.imageView.image)
+        let imageView = UIImageView(image: transitionableCell.imageView.image)
         imageView.frame = CGRect(x: 0.0, y: 0.0, width: selectedCellFrame.width, height: selectedCellFrame.height)
         imageView.contentMode = toVC.imageView.contentMode
         imageView.autoresizingMask = [.flexibleHeight, .flexibleWidth, .flexibleTopMargin, .flexibleBottomMargin]
@@ -62,7 +65,7 @@ final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransition
         containerView.addSubview(animationView)
         
         // create baseview（スナップショットをとって動かすため、VCとスナップショットの間に挟んでバツボタンを消すためだけ）
-        let blackView = UIView(frame: fromVC.collectionView.frame)
+        let blackView = UIView(frame: presenting.collectionView.frame)
         blackView.backgroundColor = .black
         containerView.insertSubview(blackView, belowSubview: animationView)
         
@@ -77,7 +80,8 @@ final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransition
             // アニメーションが完了したら、animationView, whiteViewを削除する
             animationView.removeFromSuperview()
             blackView.removeFromSuperview()
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            transitionContext.completeTransition(true)
         })
     }
+
 }

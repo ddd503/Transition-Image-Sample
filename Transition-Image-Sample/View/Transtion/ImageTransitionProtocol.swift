@@ -16,13 +16,13 @@ protocol ImageDestinationTransitionType {
     var imageView: UIImageView! { get }
 }
 
-protocol ImageCollectionViewCellType {
+protocol TransitionableCell {
     var imageView: UIImageView! { get }
     
-    static var identifier: String { get }
+//    static var identifier: String { get }
 }
 
-extension ImageCollectionViewCellType {
+extension TransitionableCell {
     static var identifier: String {
         get {
             return String(describing: self)

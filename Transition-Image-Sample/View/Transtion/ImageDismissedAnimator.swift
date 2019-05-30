@@ -48,7 +48,7 @@ final class ImageDismissedAnimator: NSObject, UIViewControllerAnimatedTransition
         guard let selectedIndexPath = toVC.collectionView.indexPathsForSelectedItems?.first else {
             return
         }
-        let selectedCell = toVC.collectionView.cellForItem(at: selectedIndexPath) as! ImageCollectionViewCellType
+        let selectedCell = toVC.collectionView.cellForItem(at: selectedIndexPath) as! TransitionableCell
         selectedCell.imageView.alpha = 0.0
         selectedCell.imageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         

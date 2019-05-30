@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailImageViewController" customModule="Transition_Image_Sample" customModuleProvider="target">
             <connections>
                 <outlet property="closeButton" destination="eJx-cV-GkN" id="Wao-je-XY3"/>
-                <outlet property="detailImageView" destination="krp-Un-9u2" id="8ND-vN-fgv"/>
+                <outlet property="imageView" destination="krp-Un-9u2" id="8ND-vN-fgv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

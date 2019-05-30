@@ -8,9 +8,9 @@
 
 import UIKit
 
-final class CollectionViewCell: UICollectionViewCell {
+final class CollectionViewCell: UICollectionViewCell, TransitionableCell {
     
-    @IBOutlet weak private var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak private var label: UILabel!
     
     static var identifier: String {

@@ -8,9 +8,9 @@
 
 import UIKit
 
-final class DetailImageViewController: UIViewController {
+final class DetailImageViewController: UIViewController, ImageDestinationTransitionType {
 
-    @IBOutlet weak private var detailImageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak private var closeButton: UIButton!
     private let image: UIImage
 
@@ -29,7 +29,7 @@ final class DetailImageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailImageView.image = image
+        imageView.image = image
     }
 
     override func viewDidLayoutSubviews() {
