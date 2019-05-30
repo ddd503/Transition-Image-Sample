@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		455BE49A20B98FCC00278286 /* ImageList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 455BE49920B98FCC00278286 /* ImageList.plist */; };
 		455BE4A120B9964C00278286 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BE4A020B9964C00278286 /* CollectionViewCell.swift */; };
 		455BE4A520B998C700278286 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BE4A420B998C700278286 /* ImageData.swift */; };
 		455BE4A720B99C6200278286 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BE4A620B99C6200278286 /* DataSource.swift */; };
@@ -19,6 +18,7 @@
 		455BE4B620B9C1FA00278286 /* ImageTransitionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BE4B520B9C1FA00278286 /* ImageTransitionProtocol.swift */; };
 		45910423229FF1A6009657BE /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45910421229FF1A6009657BE /* DetailImageViewController.swift */; };
 		45910424229FF1A6009657BE /* DetailImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45910422229FF1A6009657BE /* DetailImageViewController.xib */; };
+		4591042622A03842009657BE /* image_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 4591042522A03842009657BE /* image_list.json */; };
 		4595CD8720B98286001CD837 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4595CD8620B98286001CD837 /* AppDelegate.swift */; };
 		4595CD8920B98286001CD837 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4595CD8820B98286001CD837 /* ViewController.swift */; };
 		4595CD8C20B98286001CD837 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4595CD8A20B98286001CD837 /* Main.storyboard */; };
@@ -27,7 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		455BE49920B98FCC00278286 /* ImageList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ImageList.plist; sourceTree = "<group>"; };
 		455BE4A020B9964C00278286 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		455BE4A420B998C700278286 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		455BE4A620B99C6200278286 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -39,6 +38,7 @@
 		455BE4B520B9C1FA00278286 /* ImageTransitionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransitionProtocol.swift; sourceTree = "<group>"; };
 		45910421229FF1A6009657BE /* DetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
 		45910422229FF1A6009657BE /* DetailImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailImageViewController.xib; sourceTree = "<group>"; };
+		4591042522A03842009657BE /* image_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = image_list.json; sourceTree = "<group>"; };
 		4595CD8320B98286001CD837 /* Transition-Image-Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Transition-Image-Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4595CD8620B98286001CD837 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4595CD8820B98286001CD837 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +62,7 @@
 		455BE49B20B9917A00278286 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				4591042522A03842009657BE /* image_list.json */,
 				4595CD8620B98286001CD837 /* AppDelegate.swift */,
 				4595CD8D20B98289001CD837 /* Assets.xcassets */,
 				4595CD8F20B98289001CD837 /* LaunchScreen.storyboard */,
@@ -101,14 +102,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		455BE49F20B991C300278286 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				455BE49920B98FCC00278286 /* ImageList.plist */,
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
 		455BE4AE20B9C1AF00278286 /* Transtion */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,7 +132,6 @@
 		4595CD8520B98286001CD837 /* Transition-Image-Sample */ = {
 			isa = PBXGroup;
 			children = (
-				455BE49F20B991C300278286 /* Resource */,
 				455BE49E20B9919E00278286 /* Model */,
 				455BE49D20B9918400278286 /* View */,
 				455BE49C20B9917D00278286 /* Controoller */,
@@ -180,6 +172,7 @@
 				TargetAttributes = {
 					4595CD8220B98286001CD837 = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -206,9 +199,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				455BE49A20B98FCC00278286 /* ImageList.plist in Resources */,
 				4595CD9120B98289001CD837 /* LaunchScreen.storyboard in Resources */,
 				4595CD8E20B98289001CD837 /* Assets.xcassets in Resources */,
+				4591042622A03842009657BE /* image_list.json in Resources */,
 				4595CD8C20B98286001CD837 /* Main.storyboard in Resources */,
 				455BE4AB20B9C07E00278286 /* Image.storyboard in Resources */,
 				45910424229FF1A6009657BE /* DetailImageViewController.xib in Resources */,
@@ -385,7 +378,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kawahara.Transition-Image-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -403,7 +396,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kawahara.Transition-Image-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

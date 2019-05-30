@@ -59,6 +59,12 @@
                                             <constraint firstAttribute="trailing" secondItem="Re4-6J-aDG" secondAttribute="trailing" id="gaE-rK-ptL"/>
                                             <constraint firstItem="tQ2-8e-4WR" firstAttribute="centerX" secondItem="vBR-1w-0vf" secondAttribute="centerX" id="shX-9a-N4L"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="imageView" destination="tQ2-8e-4WR" id="rZU-g0-fMX"/>
                                             <outlet property="label" destination="Re4-6J-aDG" id="vVC-PI-J0x"/>

@@ -8,21 +8,18 @@
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
+final class CollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak private var imageView: UIImageView!
+    @IBOutlet weak private var label: UILabel!
     
     static var identifier: String {
         return String(describing: self)
     }
 
-    var imageData: ImageData? {
-        didSet {
-            self.imageView.image = imageData?.image
-            self.label.text = imageData?.imageName
-        }
+    func setup(imageData: ImageData) {
+        imageView.image = UIImage(named: imageData.name)
+        label.text = imageData.title
     }
-}
 
-extension CollectionViewCell: ImageCollectionViewCellType {}
+}

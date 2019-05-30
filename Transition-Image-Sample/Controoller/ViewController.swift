@@ -53,13 +53,10 @@ extension ViewController: UICollectionViewDataSource {
             fatalError("cell is nil")
         }
 
-        cell.imageData = imageDataList[indexPath.row]
-        cell.contentView.layer.masksToBounds = true
-        cell.contentView.layer.cornerRadius = 10
+        cell.setup(imageData: imageDataList[indexPath.row])
 
         return cell
     }
-
 
 }
 
@@ -72,7 +69,7 @@ extension ViewController: UICollectionViewDelegate {
         }
 
         imageViewController.transitioningDelegate = imageTransitionDelegate
-        imageViewController.image = imageDataList[indexPath.row].image
+//        imageViewController.image = imageDataList[indexPath.row].image
         present(imageViewController, animated: true, completion: nil)
         
     }
