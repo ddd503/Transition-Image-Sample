@@ -11,7 +11,10 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    private let provider = CollectionViewProvider()
+    private var imageDataList = [ImageData]()
+    private let numberOfColums: CGFloat = 3
+    private let spacing: CGFloat = 15
+
     var imageTransitionDelegate: ImageTransitionDelegate?
 
     override func viewDidLoad() {
@@ -21,49 +24,71 @@ class ViewController: UIViewController {
     
     private func setup() {
         self.collectionView.delegate = self
-        self.collectionView.dataSource = provider
-        provider.imageDataList = DataSource.create()
+        self.collectionView.dataSource = self
+        imageDataList = DataSource.create()
         self.collectionView.reloadData()
         imageTransitionDelegate = ImageTransitionDelegate()
     }
+
+    private func itemSize() -> CGSize {
+        let insets = self.insets()
+        let allSpace = (numberOfColums - 1) * spacing + (insets.left + insets.right)
+        let itemLength = (collectionView.bounds.size.width - allSpace) / numberOfColums
+        return CGSize(width: itemLength, height: itemLength)
+    }
+
+    private func insets() -> UIEdgeInsets {
+        return UIEdgeInsets(top: 40, left: spacing, bottom: 0, right: spacing)
+    }
+
+}
+
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageDataList.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else {
+            fatalError("cell is nil")
+        }
+
+        cell.imageData = imageDataList[indexPath.row]
+        cell.contentView.layer.masksToBounds = true
+        cell.contentView.layer.cornerRadius = 10
+
+        return cell
+    }
+
+
 }
 
 extension ViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         guard let imageViewController = UIStoryboard(name: "Image", bundle: nil)
             .instantiateInitialViewController() as? ImageViewController else {
                 return
         }
-        
+
         imageViewController.transitioningDelegate = imageTransitionDelegate
-        
-        imageViewController.image = self.provider.imageDataList[indexPath.row].image
-        
+        imageViewController.image = imageDataList[indexPath.row].image
         present(imageViewController, animated: true, completion: nil)
         
     }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
-    
-    // アイテムの大きさを設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let size = self.view.frame.width / 3.5
-        
-        return CGSize(width: size, height: size)
+        return itemSize()
     }
-    
-    // コレクションビュー自体の周りのinset（セル同士のinsetはstoryboardで）
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return spacing
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return spacing
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        let inset: CGFloat =  self.view.frame.width / 24
-        
-        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+        return insets()
     }
-    
 }
-
-extension ViewController: ImageSourceTransitionType {}

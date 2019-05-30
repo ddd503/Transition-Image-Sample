@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		455BE49A20B98FCC00278286 /* ImageList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 455BE49920B98FCC00278286 /* ImageList.plist */; };
 		455BE4A120B9964C00278286 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BE4A020B9964C00278286 /* CollectionViewCell.swift */; };
-		455BE4A320B9986600278286 /* CollectionViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BE4A220B9986600278286 /* CollectionViewProvider.swift */; };
 		455BE4A520B998C700278286 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BE4A420B998C700278286 /* ImageData.swift */; };
 		455BE4A720B99C6200278286 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BE4A620B99C6200278286 /* DataSource.swift */; };
 		455BE4AB20B9C07E00278286 /* Image.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455BE4AA20B9C07E00278286 /* Image.storyboard */; };
@@ -30,7 +29,6 @@
 /* Begin PBXFileReference section */
 		455BE49920B98FCC00278286 /* ImageList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ImageList.plist; sourceTree = "<group>"; };
 		455BE4A020B9964C00278286 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		455BE4A220B9986600278286 /* CollectionViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewProvider.swift; sourceTree = "<group>"; };
 		455BE4A420B998C700278286 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		455BE4A620B99C6200278286 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		455BE4AA20B9C07E00278286 /* Image.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Image.storyboard; sourceTree = "<group>"; };
@@ -90,7 +88,6 @@
 			children = (
 				455BE4AE20B9C1AF00278286 /* Transtion */,
 				455BE4A020B9964C00278286 /* CollectionViewCell.swift */,
-				455BE4A220B9986600278286 /* CollectionViewProvider.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -229,7 +226,6 @@
 				455BE4A720B99C6200278286 /* DataSource.swift in Sources */,
 				4595CD8920B98286001CD837 /* ViewController.swift in Sources */,
 				45910423229FF1A6009657BE /* DetailImageViewController.swift in Sources */,
-				455BE4A320B9986600278286 /* CollectionViewProvider.swift in Sources */,
 				455BE4AD20B9C09700278286 /* ImageViewController.swift in Sources */,
 				4595CD8720B98286001CD837 /* AppDelegate.swift in Sources */,
 				455BE4A520B998C700278286 /* ImageData.swift in Sources */,
