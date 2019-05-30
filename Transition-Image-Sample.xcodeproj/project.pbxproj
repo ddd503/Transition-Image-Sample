@@ -18,6 +18,8 @@
 		455BE4B220B9C1CE00278286 /* ImageTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BE4B120B9C1CE00278286 /* ImageTransitionDelegate.swift */; };
 		455BE4B420B9C1D900278286 /* ImageDismissedAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BE4B320B9C1D900278286 /* ImageDismissedAnimator.swift */; };
 		455BE4B620B9C1FA00278286 /* ImageTransitionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BE4B520B9C1FA00278286 /* ImageTransitionProtocol.swift */; };
+		45910423229FF1A6009657BE /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45910421229FF1A6009657BE /* DetailImageViewController.swift */; };
+		45910424229FF1A6009657BE /* DetailImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45910422229FF1A6009657BE /* DetailImageViewController.xib */; };
 		4595CD8720B98286001CD837 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4595CD8620B98286001CD837 /* AppDelegate.swift */; };
 		4595CD8920B98286001CD837 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4595CD8820B98286001CD837 /* ViewController.swift */; };
 		4595CD8C20B98286001CD837 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4595CD8A20B98286001CD837 /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 		455BE4B120B9C1CE00278286 /* ImageTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransitionDelegate.swift; sourceTree = "<group>"; };
 		455BE4B320B9C1D900278286 /* ImageDismissedAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDismissedAnimator.swift; sourceTree = "<group>"; };
 		455BE4B520B9C1FA00278286 /* ImageTransitionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransitionProtocol.swift; sourceTree = "<group>"; };
+		45910421229FF1A6009657BE /* DetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
+		45910422229FF1A6009657BE /* DetailImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailImageViewController.xib; sourceTree = "<group>"; };
 		4595CD8320B98286001CD837 /* Transition-Image-Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Transition-Image-Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4595CD8620B98286001CD837 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4595CD8820B98286001CD837 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 				4595CD8A20B98286001CD837 /* Main.storyboard */,
 				455BE4AA20B9C07E00278286 /* Image.storyboard */,
 				455BE4AC20B9C09700278286 /* ImageViewController.swift */,
+				45910421229FF1A6009657BE /* DetailImageViewController.swift */,
+				45910422229FF1A6009657BE /* DetailImageViewController.xib */,
 			);
 			path = Controoller;
 			sourceTree = "<group>";
@@ -208,6 +214,7 @@
 				4595CD8E20B98289001CD837 /* Assets.xcassets in Resources */,
 				4595CD8C20B98286001CD837 /* Main.storyboard in Resources */,
 				455BE4AB20B9C07E00278286 /* Image.storyboard in Resources */,
+				45910424229FF1A6009657BE /* DetailImageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +228,7 @@
 				455BE4B220B9C1CE00278286 /* ImageTransitionDelegate.swift in Sources */,
 				455BE4A720B99C6200278286 /* DataSource.swift in Sources */,
 				4595CD8920B98286001CD837 /* ViewController.swift in Sources */,
+				45910423229FF1A6009657BE /* DetailImageViewController.swift in Sources */,
 				455BE4A320B9986600278286 /* CollectionViewProvider.swift in Sources */,
 				455BE4AD20B9C09700278286 /* ImageViewController.swift in Sources */,
 				4595CD8720B98286001CD837 /* AppDelegate.swift in Sources */,
