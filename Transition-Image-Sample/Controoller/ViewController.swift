@@ -54,7 +54,6 @@ extension ViewController: UICollectionViewDataSource {
         }
 
         cell.setup(imageData: imageDataList[indexPath.row])
-
         return cell
     }
 
@@ -63,15 +62,11 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let imageViewController = UIStoryboard(name: "Image", bundle: nil)
-            .instantiateInitialViewController() as? ImageViewController else {
-                return
-        }
-
-        imageViewController.transitioningDelegate = imageTransitionDelegate
+        guard let image = UIImage(named: imageDataList[indexPath.item].name) else { return }
+        let detailImageVC = DetailImageViewController(image: image)
+//        imageViewController.transitioningDelegate = imageTransitionDelegate
 //        imageViewController.image = imageDataList[indexPath.row].image
-        present(imageViewController, animated: true, completion: nil)
-        
+        present(detailImageVC, animated: true, completion: nil)
     }
 }
 

@@ -11,11 +11,12 @@ import UIKit
 final class DetailImageViewController: UIViewController {
 
     @IBOutlet weak private var detailImageView: UIImageView!
+    @IBOutlet weak private var closeButton: UIButton!
     private let image: UIImage
 
     init(image: UIImage) {
         self.image = image
-        super.init(nibName: "", bundle: .main)
+        super.init(nibName: "DetailImageViewController", bundle: .main)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -29,6 +30,22 @@ final class DetailImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         detailImageView.image = image
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if !closeButton.isEnabled {
+            UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveLinear, animations: {
+                self.closeButton.alpha = 1.0
+            }) { (_) in
+                self.closeButton.isEnabled = true
+            }
+        }
+    }
+
+    @IBAction func didTapClose(_ sender: UIButton) {
+        sender.isHidden = true
+        dismiss(animated: true, completion: nil)
     }
 
 }

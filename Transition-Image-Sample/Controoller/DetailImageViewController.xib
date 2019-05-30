@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailImageViewController" customModule="Transition_Image_Sample" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="eJx-cV-GkN" id="Wao-je-XY3"/>
                 <outlet property="detailImageView" destination="krp-Un-9u2" id="8ND-vN-fgv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,13 +25,27 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="krp-Un-9u2">
                     <rect key="frame" x="0.0" y="269" width="414" height="358"/>
                 </imageView>
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJx-cV-GkN">
+                    <rect key="frame" x="334" y="64" width="60" height="40"/>
+                    <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="24d-Fa-hc7"/>
+                        <constraint firstAttribute="width" constant="60" id="iNG-I3-aP2"/>
+                    </constraints>
+                    <state key="normal" title="✖️"/>
+                    <connections>
+                        <action selector="didTapClose:" destination="-1" eventType="touchUpInside" id="Eg9-me-2JM"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="krp-Un-9u2" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="A2o-1H-CII"/>
                 <constraint firstItem="krp-Un-9u2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.4" id="Lb0-Qp-LQt"/>
+                <constraint firstItem="eJx-cV-GkN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="h7s-zZ-cbC"/>
                 <constraint firstItem="krp-Un-9u2" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="o6C-ML-gex"/>
                 <constraint firstItem="krp-Un-9u2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yKc-PL-RBg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eJx-cV-GkN" secondAttribute="trailing" constant="20" id="zPU-yc-wS7"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
