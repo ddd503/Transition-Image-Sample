@@ -37,7 +37,7 @@ final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransition
             let toVC = transitionContext.viewController(forKey: .to) as? ImageDestinationTransitionType else {
                 return
         }
-        
+
         // set image
         toVC.imageView.image = transitionableCell.imageView.image
         
