@@ -9,17 +9,16 @@
 import UIKit
 
 final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-
     let presenting: ImageSourceTransitionType
     let presented: ImageDestinationTransitionType
-    let transitionableCell: TransitionableCell
     let duration: TimeInterval
+    let selectedCellIndex: IndexPath
 
-    init(presenting: ImageSourceTransitionType, presented: ImageDestinationTransitionType, transitionableCell: TransitionableCell, duration: TimeInterval) {
+    init(presenting: ImageSourceTransitionType, presented: ImageDestinationTransitionType, duration: TimeInterval, selectedCellIndex: IndexPath) {
         self.presenting = presenting
         self.presented = presented
-        self.transitionableCell = transitionableCell
         self.duration = duration
+        self.selectedCellIndex = selectedCellIndex
     }
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -27,61 +26,34 @@ final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransition
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        
         let containerView = transitionContext.containerView
+        // 遷移先のsuperViewをaddしないと画面が描画されない
+        containerView.addSubview(presented.view)
+        presented.view.alpha = 0
+        // 遷移先のViewのframeが確定していないため確定させる（呼ばないと確定前のoriginが取れる）
+        presented.view.layoutIfNeeded()
 
-        let animationDuration = transitionDuration(using: transitionContext)
-        
-        guard
-            let toView = transitionContext.view(forKey: .to),
-            let toVC = transitionContext.viewController(forKey: .to) as? ImageDestinationTransitionType else {
-                return
+        guard let transitionableCell = presenting.collectionView.cellForItem(at: selectedCellIndex) as? TransitionableCell else {
+            transitionContext.cancelInteractiveTransition()
+            return
         }
 
-        // set image
-        toVC.imageView.image = transitionableCell.imageView.image
-        
-        let finalFrame = presented.imageView.frame
-        
-        toView.clipsToBounds = true
-        containerView.addSubview(toView)
-        
-        let selectedCellFrame = containerView.convert(
-            transitionableCell.imageView.frame,
-            from: transitionableCell.imageView.superview
-        )
-        
-        // create animationView
-        let animationView = UIView(frame: selectedCellFrame)
-        animationView.backgroundColor = .clear
-        animationView.clipsToBounds = true
-        
+        let animationView = UIView(frame: presented.view.frame)
+        animationView.backgroundColor = .black
+
         let imageView = UIImageView(image: transitionableCell.imageView.image)
-        imageView.frame = CGRect(x: 0.0, y: 0.0, width: selectedCellFrame.width, height: selectedCellFrame.height)
-        imageView.contentMode = toVC.imageView.contentMode
-        imageView.autoresizingMask = [.flexibleHeight, .flexibleWidth, .flexibleTopMargin, .flexibleBottomMargin]
-        
+        imageView.frame.size = transitionableCell.imageView.frame.size
+        imageView.contentMode = transitionableCell.imageView.contentMode
+        imageView.frame.origin = presenting.collectionView.convert(transitionableCell.frame.origin, to: presenting.view)
         animationView.addSubview(imageView)
         containerView.addSubview(animationView)
-        
-        // create baseview（スナップショットをとって動かすため、VCとスナップショットの間に挟んでバツボタンを消すためだけ）
-        let blackView = UIView(frame: presenting.collectionView.frame)
-        blackView.backgroundColor = .black
-        containerView.insertSubview(blackView, belowSubview: animationView)
-        
-        UIView.animate(withDuration: animationDuration,
-                       delay: 0.0,
-                       options: .curveEaseOut,
-                       animations: {
-                        animationView.frame = finalFrame
-                        
-        }, completion: { _ in
-            
-            // アニメーションが完了したら、animationView, whiteViewを削除する
+
+        UIView.animate(withDuration: duration, delay: 0.0, options: .curveEaseIn, animations: {
+            imageView.frame = self.presented.imageView.frame
+        }, completion: { [weak self] _ in
+            self?.presented.view.alpha = 1
             animationView.removeFromSuperview()
-            blackView.removeFromSuperview()
             transitionContext.completeTransition(true)
         })
     }
-
 }

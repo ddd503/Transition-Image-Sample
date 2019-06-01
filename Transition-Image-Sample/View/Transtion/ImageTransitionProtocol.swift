@@ -8,24 +8,16 @@
 
 import UIKit
 
-protocol ImageSourceTransitionType {
+protocol ImageSourceTransitionType: UIViewController {
+    var view: UIView! { get }
     var collectionView: UICollectionView! { get }
 }
 
-protocol ImageDestinationTransitionType {
+protocol ImageDestinationTransitionType: UIViewController {
+    var view: UIView! { get }
     var imageView: UIImageView! { get }
 }
 
-protocol TransitionableCell {
+protocol TransitionableCell: UICollectionViewCell {
     var imageView: UIImageView! { get }
-    
-//    static var identifier: String { get }
-}
-
-extension TransitionableCell {
-    static var identifier: String {
-        get {
-            return String(describing: self)
-        }
-    }
 }

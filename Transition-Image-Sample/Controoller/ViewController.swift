@@ -14,7 +14,7 @@ class ViewController: UIViewController, ImageSourceTransitionType {
     private var imageDataList = [ImageData]()
     private let numberOfColums: CGFloat = 3
     private let spacing: CGFloat = 15
-    private var selectingCellIndex = IndexPath()
+    private var selectedCellIndex = IndexPath()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectingCellIndex = indexPath
+        selectedCellIndex = indexPath
         guard let image = UIImage(named: imageDataList[indexPath.item].name) else { return }
         let detailImageVC = DetailImageViewController(image: image)
         detailImageVC.transitioningDelegate = self
@@ -82,11 +82,11 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 extension ViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard let vc = presenting as? ImageSourceTransitionType, let detailImageVC = presented as? ImageDestinationTransitionType, let transitionableCell = vc.collectionView.cellForItem(at: selectingCellIndex) as? TransitionableCell else {
+        guard let vc = presenting as? ImageSourceTransitionType, let detailImageVC = presented as? ImageDestinationTransitionType else {
             return nil
         }
 
-        return ImagePresentedAnimator(presenting: vc, presented: detailImageVC, transitionableCell: transitionableCell, duration: 1.0)
+        return ImagePresentedAnimator(presenting: vc, presented: detailImageVC, duration: 0.3, selectedCellIndex: selectedCellIndex)
     }
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
