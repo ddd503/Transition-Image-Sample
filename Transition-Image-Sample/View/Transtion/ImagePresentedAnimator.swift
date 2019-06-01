@@ -48,12 +48,14 @@ final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransition
         animationView.addSubview(imageView)
         containerView.addSubview(animationView)
 
-        UIView.animate(withDuration: duration, delay: 0.0, options: .curveEaseIn, animations: {
+        let animation = UIViewPropertyAnimator(duration: duration, dampingRatio: 0.7) {
             imageView.frame = self.presented.imageView.frame
-        }, completion: { [weak self] _ in
+        }
+        animation.addCompletion { [weak self] (_) in
             self?.presented.view.alpha = 1
             animationView.removeFromSuperview()
             transitionContext.completeTransition(true)
-        })
+        }
+        animation.startAnimation()
     }
 }

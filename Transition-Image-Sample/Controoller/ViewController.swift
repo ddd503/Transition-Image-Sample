@@ -86,7 +86,7 @@ extension ViewController: UIViewControllerTransitioningDelegate {
             return nil
         }
 
-        return ImagePresentedAnimator(presenting: vc, presented: detailImageVC, duration: 0.3, selectedCellIndex: selectedCellIndex)
+        return ImagePresentedAnimator(presenting: vc, presented: detailImageVC, duration: 0.4, selectedCellIndex: selectedCellIndex)
     }
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
