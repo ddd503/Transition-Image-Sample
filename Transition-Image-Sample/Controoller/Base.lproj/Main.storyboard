@@ -78,7 +78,7 @@
                             <constraint firstItem="rdT-sO-lfj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2Pt-zf-waf"/>
                             <constraint firstItem="rdT-sO-lfj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PhX-Hu-TRB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rdT-sO-lfj" secondAttribute="trailing" id="R2l-u6-Jet"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rdT-sO-lfj" secondAttribute="bottom" id="xoS-tl-UDe"/>
+                            <constraint firstAttribute="bottom" secondItem="rdT-sO-lfj" secondAttribute="bottom" id="xoS-tl-UDe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

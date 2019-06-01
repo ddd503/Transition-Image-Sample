@@ -38,7 +38,7 @@ final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransition
             return
         }
 
-        let animationView = UIView(frame: presented.view.frame)
+        let animationView = UIView(frame: UIScreen.main.bounds)
         animationView.backgroundColor = .black
 
         let imageView = UIImageView(image: transitionableCell.imageView.image)
