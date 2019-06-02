@@ -8,15 +8,26 @@
 
 import UIKit
 
+
+
 final class DetailImageViewController: UIViewController, ImageDestinationTransitionType {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak private var closeButton: UIButton!
     private let image: UIImage
+    private var statusBarIsHidden = false
+    private var currentImageStatus: ImageStatus = .normal
 
+    private enum ImageStatus {
+        case normal
+        case focus
+    }
+    
     init(image: UIImage) {
         self.image = image
         super.init(nibName: "DetailImageViewController", bundle: .main)
+        // xibだとiPhoneX画面サイズ = view.frameとはならないため
+        view.frame.size.height = UIScreen.main.bounds.height
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -24,7 +35,7 @@ final class DetailImageViewController: UIViewController, ImageDestinationTransit
     }
 
     override var prefersStatusBarHidden: Bool {
-        return true
+        return statusBarIsHidden
     }
 
     override func viewDidLoad() {
@@ -43,9 +54,29 @@ final class DetailImageViewController: UIViewController, ImageDestinationTransit
         }
     }
 
+    @IBAction func didTapScreen(_ sender: UITapGestureRecognizer) {
+        setImageStatus(currentImageStatus)
+    }
+
     @IBAction func didTapClose(_ sender: UIButton) {
         sender.isHidden = true
         dismiss(animated: true, completion: nil)
+    }
+
+    private func setImageStatus(_ status: ImageStatus) {
+        switch status {
+        case .normal:
+            closeButton.isHidden = true
+            view.backgroundColor = .black
+            statusBarIsHidden = true
+            currentImageStatus = .focus
+        case .focus:
+            closeButton.isHidden = false
+            view.backgroundColor = .white
+            statusBarIsHidden = false
+            currentImageStatus = .normal
+        }
+        setNeedsStatusBarAppearanceUpdate()
     }
 
 }

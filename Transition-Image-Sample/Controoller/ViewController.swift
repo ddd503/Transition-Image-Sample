@@ -82,14 +82,18 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 extension ViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard let vc = presenting as? ImageSourceTransitionType, let detailImageVC = presented as? ImageDestinationTransitionType else {
+        guard let detailImageVC = presented as? ImageDestinationTransitionType else {
             return nil
         }
 
-        return ImagePresentedAnimator(presenting: vc, presented: detailImageVC, duration: 0.4, selectedCellIndex: selectedCellIndex)
+        return ImagePresentedAnimator(presenting: self, presented: detailImageVC, duration: 0.4, selectedCellIndex: selectedCellIndex)
     }
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return ImageDismissedAnimator()
+        guard let detailImageVC = dismissed as? ImageDestinationTransitionType else {
+            return nil
+        }
+
+        return ImageDismissedAnimator(presenting: self, presented: detailImageVC, duration: 0.2, selectedCellIndex: selectedCellIndex)
     }
 }

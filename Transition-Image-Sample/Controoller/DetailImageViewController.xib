@@ -23,10 +23,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="krp-Un-9u2">
-                    <rect key="frame" x="0.0" y="192.99999999999997" width="414" height="294.33333333333326"/>
+                    <rect key="frame" x="0.0" y="183.99999999999997" width="414" height="294.33333333333326"/>
                 </imageView>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJx-cV-GkN">
-                    <rect key="frame" x="294" y="80" width="60" height="60"/>
+                    <rect key="frame" x="294" y="60" width="60" height="60"/>
                     <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="24d-Fa-hc7"/>
@@ -45,16 +45,25 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <gestureRecognizers/>
             <constraints>
-                <constraint firstItem="krp-Un-9u2" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.9" id="A2o-1H-CII"/>
+                <constraint firstItem="krp-Un-9u2" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.9" id="A2o-1H-CII"/>
                 <constraint firstItem="krp-Un-9u2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.4" id="Lb0-Qp-LQt"/>
-                <constraint firstItem="eJx-cV-GkN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="60" id="h7s-zZ-cbC"/>
+                <constraint firstItem="eJx-cV-GkN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="h7s-zZ-cbC"/>
                 <constraint firstItem="krp-Un-9u2" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="o6C-ML-gex"/>
                 <constraint firstItem="krp-Un-9u2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yKc-PL-RBg"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eJx-cV-GkN" secondAttribute="trailing" constant="60" id="zPU-yc-wS7"/>
+                <constraint firstAttribute="trailing" secondItem="eJx-cV-GkN" secondAttribute="trailing" constant="60" id="zPU-yc-wS7"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <viewLayoutGuide key="safeArea" id="ogv-Oj-Mf6"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="wJM-Hx-LbH" appends="YES" id="Mfy-DQ-NQk"/>
+            </connections>
         </view>
+        <tapGestureRecognizer id="wJM-Hx-LbH">
+            <connections>
+                <action selector="didTapScreen:" destination="-1" id="lX6-cB-6DN"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

@@ -39,16 +39,16 @@ final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransition
         }
 
         let animationView = UIView(frame: UIScreen.main.bounds)
-        animationView.backgroundColor = .black
+        animationView.backgroundColor = .white
 
         let imageView = UIImageView(image: transitionableCell.imageView.image)
         imageView.frame.size = transitionableCell.imageView.frame.size
         imageView.contentMode = transitionableCell.imageView.contentMode
-        imageView.frame.origin = presenting.collectionView.convert(transitionableCell.frame.origin, to: presenting.view)
+        imageView.frame.origin = transitionableCell.convert(transitionableCell.imageView.bounds.origin, to: presenting.view)
         animationView.addSubview(imageView)
         containerView.addSubview(animationView)
 
-        let animation = UIViewPropertyAnimator(duration: duration, dampingRatio: 0.7) {
+        let animation = UIViewPropertyAnimator(duration: duration, dampingRatio: 0.75) {
             imageView.frame = self.presented.imageView.frame
         }
         animation.addCompletion { [weak self] (_) in
