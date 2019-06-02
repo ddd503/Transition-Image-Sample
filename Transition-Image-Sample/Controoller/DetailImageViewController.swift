@@ -12,7 +12,6 @@ final class DetailImageViewController: UIViewController, ImageDestinationTransit
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak private var closeButton: UIButton!
-    private let image: UIImage
     private var statusBarIsHidden = false
     private var currentImageStatus: ImageStatus = .normal
 
@@ -22,10 +21,10 @@ final class DetailImageViewController: UIViewController, ImageDestinationTransit
     }
     
     init(image: UIImage) {
-        self.image = image
         super.init(nibName: "DetailImageViewController", bundle: .main)
         // xibだとiPhoneX画面サイズ = view.frameとはならないため
         view.frame.size.height = UIScreen.main.bounds.height
+        imageView.image = image
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -35,12 +34,7 @@ final class DetailImageViewController: UIViewController, ImageDestinationTransit
     override var prefersStatusBarHidden: Bool {
         return statusBarIsHidden
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        imageView.image = image
-    }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if !closeButton.isEnabled {
