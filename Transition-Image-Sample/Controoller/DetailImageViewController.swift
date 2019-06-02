@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 final class DetailImageViewController: UIViewController, ImageDestinationTransitionType {
 
     @IBOutlet weak var imageView: UIImageView!
