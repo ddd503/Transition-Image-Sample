@@ -55,7 +55,7 @@
                 <constraint firstItem="krp-Un-9u2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yKc-PL-RBg"/>
                 <constraint firstAttribute="trailing" secondItem="eJx-cV-GkN" secondAttribute="trailing" constant="60" id="zPU-yc-wS7"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ogv-Oj-Mf6"/>
+            <viewLayoutGuide key="safeArea" id="AGm-ol-YGU"/>
             <connections>
                 <outletCollection property="gestureRecognizers" destination="wJM-Hx-LbH" appends="YES" id="Mfy-DQ-NQk"/>
             </connections>
