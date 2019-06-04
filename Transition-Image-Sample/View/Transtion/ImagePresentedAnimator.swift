@@ -33,7 +33,7 @@ final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransition
         // 遷移先のViewのframeが確定していないため確定させる（呼ばないと確定前のoriginが取れる）
         presented.view.layoutIfNeeded()
 
-        guard let transitionableCell = presenting.collectionView.cellForItem(at: selectedCellIndex) as? TransitionableCell else {
+        guard let transitionableCell = presenting.collectionView.cellForItem(at: selectedCellIndex) as? CollectionViewCell else {
             transitionContext.cancelInteractiveTransition()
             return
         }
