@@ -9,11 +9,9 @@
 import UIKit
 
 protocol ImageSourceTransitionType: UIViewController {
-    var view: UIView! { get }
     var collectionView: UICollectionView! { get }
 }
 
 protocol ImageDestinationTransitionType: UIViewController {
-    var view: UIView! { get }
     var imageView: UIImageView! { get }
 }

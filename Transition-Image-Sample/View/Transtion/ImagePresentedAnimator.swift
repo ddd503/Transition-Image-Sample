@@ -9,8 +9,8 @@
 import UIKit
 
 final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    let presenting: ImageSourceTransitionType
-    let presented: ImageDestinationTransitionType
+    weak var presenting: ImageSourceTransitionType?
+    weak var presented: ImageDestinationTransitionType?
     let duration: TimeInterval
     let selectedCellIndex: IndexPath
 
@@ -26,6 +26,11 @@ final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransition
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let presenting = presenting, let presented = presented else {
+            transitionContext.cancelInteractiveTransition()
+            return
+        }
+
         let containerView = transitionContext.containerView
         // 遷移先のsuperViewをaddしないと画面が描画されない
         containerView.addSubview(presented.view)
@@ -49,10 +54,10 @@ final class ImagePresentedAnimator: NSObject, UIViewControllerAnimatedTransition
         containerView.addSubview(animationView)
 
         let animation = UIViewPropertyAnimator(duration: duration, dampingRatio: 0.75) {
-            imageView.frame = self.presented.imageView.frame
+            imageView.frame = presented.imageView.frame
         }
-        animation.addCompletion { [weak self] (_) in
-            self?.presented.view.alpha = 1
+        animation.addCompletion { (_) in
+            presented.view.alpha = 1
             animationView.removeFromSuperview()
             transitionContext.completeTransition(true)
         }
