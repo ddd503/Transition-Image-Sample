@@ -26,7 +26,7 @@
                     <rect key="frame" x="0.0" y="183.99999999999997" width="414" height="294.33333333333326"/>
                 </imageView>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJx-cV-GkN">
-                    <rect key="frame" x="294" y="60" width="60" height="60"/>
+                    <rect key="frame" x="324" y="60" width="60" height="60"/>
                     <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="24d-Fa-hc7"/>
@@ -53,7 +53,7 @@
                 <constraint firstItem="eJx-cV-GkN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="h7s-zZ-cbC"/>
                 <constraint firstItem="krp-Un-9u2" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="o6C-ML-gex"/>
                 <constraint firstItem="krp-Un-9u2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yKc-PL-RBg"/>
-                <constraint firstAttribute="trailing" secondItem="eJx-cV-GkN" secondAttribute="trailing" constant="60" id="zPU-yc-wS7"/>
+                <constraint firstAttribute="trailing" secondItem="eJx-cV-GkN" secondAttribute="trailing" constant="30" id="zPU-yc-wS7"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="AGm-ol-YGU"/>
             <connections>
